@@ -20,8 +20,8 @@ class CreateInfosTable extends Migration
             $table->string('body');
             $table->date('date');
 
-            $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('classifications');
+            $table->unsignedBigInteger('classification_id');
+            $table->foreign('classification_id')->references('id')->on('classifications');
 
             $table->timestamps();
         });

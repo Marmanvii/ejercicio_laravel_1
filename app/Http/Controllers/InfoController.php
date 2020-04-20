@@ -27,7 +27,8 @@ class InfoController extends Controller
      */
     public function create()
     {
-        return view('infos.create');
+        $classifications = Classification::all();
+        return view('infos.create', compact('classifications'));
     }
 
     /**
@@ -43,12 +44,14 @@ class InfoController extends Controller
             'title' => 'required',
             'body' => 'required',
             'date' => 'required',
+            'classification_id' => 'required'
             ]);
         $info = new Info;
         $info->author = request('author');
         $info->title = request('title');
         $info->body = request('body');
         $info->date = request('date');
+        $info->classification_id = request('classification_id');
         $info->save();
         return redirect('/');
     }
@@ -86,7 +89,21 @@ class InfoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate(request(),[
+            'author' => 'required',
+            'title' => 'required',
+            'body' => 'required',
+            'date' => 'required',
+            'classification_id' => 'required'
+            ]);
+        $info = Info::find($id);
+        $info->author = request('author');
+        $info->title = request('title');
+        $info->body = request('body');
+        $info->date = request('date');
+        $info->classification_id = request('classification_id');
+        $info->save();
+        return redirect('/');
     }
 
     /**
