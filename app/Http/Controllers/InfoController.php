@@ -25,7 +25,7 @@ class InfoController extends Controller
      */
     public function create()
     {
-        //
+        return view('infos.create');
     }
 
     /**
@@ -36,7 +36,19 @@ class InfoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate(request(),[
+            'author' => 'required',
+            'title' => 'required',
+            'body' => 'required',
+            'date' => 'required',
+            ]);
+        $info = new Info;
+        $info->author = request('author');
+        $info->title = request('title');
+        $info->body = request('body');
+        $info->date = request('date');
+        $info->save();
+        return redirect('/');
     }
 
     /**
