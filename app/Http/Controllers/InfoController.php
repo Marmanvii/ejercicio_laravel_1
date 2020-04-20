@@ -114,6 +114,9 @@ class InfoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $info = Info::findOrfail($id);
+        $info -> delete();
+
+        return redirect('/');
     }
 }
