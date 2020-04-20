@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Info;
+use App\Classification;
 
 class InfoController extends Controller
 {
@@ -15,7 +16,8 @@ class InfoController extends Controller
     public function index()
     {
         $infos = Info::all();
-        return view('infos.index', compact('infos'));
+        $classifications = Classification::all();
+        return view('infos.index', compact('infos', 'classifications'));
     }
 
     /**
@@ -58,7 +60,9 @@ class InfoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $classifications = Classification::all();
+        $info = Info::find($id);
+        return view('infos.edit', compact('info', 'classifications'));
     }
 
     /**
