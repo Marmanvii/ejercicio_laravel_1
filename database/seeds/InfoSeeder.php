@@ -16,6 +16,7 @@ class InfoSeeder extends Seeder
             'title' => 'Titulo 1',
             'body' => 'Ejemplo de body 1',
             'date' => $date= now(),
+            'classification_id' => 1,
         ]);
 
         DB::table('infos')->insert([
@@ -23,6 +24,15 @@ class InfoSeeder extends Seeder
             'title' => 'Titulo 2',
             'body' => 'Ejemplo de body 2',
             'date' => $date= now(),
+            'classification_id' => 2,
+        ]);
+
+        DB::table('infos')->insert([
+            'author' => 'Nombre autor 3',
+            'title' => 'Titulo 3',
+            'body' => 'Ejemplo de body 3',
+            'date' => $date= now(),
+            'classification_id' => 1,
         ]);
 
     }

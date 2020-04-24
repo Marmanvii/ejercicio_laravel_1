@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Info;
+use App\Classification;
 
 class InfoController extends Controller
 {
@@ -15,7 +16,8 @@ class InfoController extends Controller
     public function index()
     {
         $infos = Info::all();
-        return view('infos.index', compact('infos'));
+        $classifications = Classification::all();
+        return view('infos.index', compact('infos', 'classifications'));
     }
 
     /**
@@ -25,7 +27,8 @@ class InfoController extends Controller
      */
     public function create()
     {
-        //
+        $classifications = Classification::all();
+        return view('infos.create', compact('classifications'));
     }
 
     /**
@@ -36,7 +39,21 @@ class InfoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate(request(),[
+            'author' => 'required',
+            'title' => 'required',
+            'body' => 'required',
+            'date' => 'required',
+            'classification_id' => 'required'
+            ]);
+        $info = new Info;
+        $info->author = request('author');
+        $info->title = request('title');
+        $info->body = request('body');
+        $info->date = request('date');
+        $info->classification_id = request('classification_id');
+        $info->save();
+        return redirect('/');
     }
 
     /**
@@ -58,7 +75,9 @@ class InfoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $classifications = Classification::all();
+        $info = Info::find($id);
+        return view('infos.edit', compact('info', 'classifications'));
     }
 
     /**
@@ -70,7 +89,21 @@ class InfoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate(request(),[
+            'author' => 'required',
+            'title' => 'required',
+            'body' => 'required',
+            'date' => 'required',
+            'classification_id' => 'required'
+            ]);
+        $info = Info::find($id);
+        $info->author = request('author');
+        $info->title = request('title');
+        $info->body = request('body');
+        $info->date = request('date');
+        $info->classification_id = request('classification_id');
+        $info->save();
+        return redirect('/');
     }
 
     /**
@@ -81,6 +114,9 @@ class InfoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $info = Info::findOrfail($id);
+        $info -> delete();
+
+        return redirect('/');
     }
 }

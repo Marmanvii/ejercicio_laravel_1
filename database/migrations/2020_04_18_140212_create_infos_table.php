@@ -19,6 +19,10 @@ class CreateInfosTable extends Migration
             $table->string('title');
             $table->string('body');
             $table->date('date');
+
+            $table->unsignedBigInteger('classification_id');
+            $table->foreign('classification_id')->references('id')->on('classifications');
+
             $table->timestamps();
         });
     }
