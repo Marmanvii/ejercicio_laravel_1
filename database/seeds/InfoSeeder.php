@@ -32,7 +32,23 @@ class InfoSeeder extends Seeder
             'title' => 'Titulo 3',
             'body' => 'Ejemplo de body 3',
             'date' => $date= now(),
+            'classification_id' => 3,
+        ]);
+
+        DB::table('infos')->insert([
+            'author' => 'Nombre autor 4',
+            'title' => 'Titulo 4',
+            'body' => 'Ejemplo de body 4',
+            'date' => $date= now(),
             'classification_id' => 1,
+        ]);
+
+        DB::table('infos')->insert([
+            'author' => 'Nombre autor 5',
+            'title' => 'Titulo 5',
+            'body' => 'Ejemplo de body 5',
+            'date' => $date= now(),
+            'classification_id' => 2,
         ]);
 
     }

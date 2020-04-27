@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateClassificationsTable extends Migration
+class InfoTag extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateClassificationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('classifications', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
+        Schema::create('info_tag', function (Blueprint $table) {
+            $table->unsignedBigInteger('info_id');
+            $table->unsignedBigInteger('tag_id');
 
-            $table->unsignedBigInteger('manager_id');
-            $table->foreign('manager_id')->references('id')->on('managers');
+            $table->primary(['info_id', 'tag_id']);
+            $table->foreign('info_id')->references('id')->on('infos');
+            $table->foreign('tag_id')->references('id')->on('tags');
 
             $table->timestamps();
         });
@@ -31,6 +32,6 @@ class CreateClassificationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('classifications');
+        //
     }
 }
