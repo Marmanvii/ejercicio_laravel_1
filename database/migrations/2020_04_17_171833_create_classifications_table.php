@@ -17,7 +17,7 @@ class CreateClassificationsTable extends Migration
             $table->id();
             $table->string('name');
 
-            $table->unsignedBigInteger('manager_id');
+            $table->unsignedBigInteger('manager_id')->unique();
             $table->foreign('manager_id')->references('id')->on('managers');
 
             $table->timestamps();

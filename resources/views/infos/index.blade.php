@@ -29,7 +29,12 @@
         </form>
     </div>
     <div class="column">
-        <form action="/tags/{{$info->classification_id}}" method="GET">
+        <form action="/classificationbyinfo/{{$info->classification_id}}" method="GET">
+            <button type="submit">Classification</button>
+        </form>
+    </div>
+    <div class="column">
+        <form action="/tagsbyinfo/{{$info->id}}" method="GET">
             <button type="submit">Tags</button>
         </form>
     </div>
@@ -41,6 +46,7 @@
 <a href="/infos/create">Agregar Noticia</a>
 
 <style>
+    
 .column {
   float: left;
   width: 8%;

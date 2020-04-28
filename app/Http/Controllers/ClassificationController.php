@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Classification;
 use App\Manager;
+use App\Info;
 
 class ClassificationController extends Controller
 {
@@ -28,8 +29,7 @@ class ClassificationController extends Controller
 
     public function show($id)
     {
-        $classification = Manager::find($id)->classification;
-        return $classification;
+        //
     }
 
     public function edit($id)
@@ -45,5 +45,17 @@ class ClassificationController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getClassificationByManager ($id) 
+    {
+        $classification = Manager::find($id)->classification;
+        return $classification;
+    }
+    
+    public function getClassificationByInfo ($id) 
+    {
+        $classification = Info::find($id)->classification;
+        return $classification;
     }
 }

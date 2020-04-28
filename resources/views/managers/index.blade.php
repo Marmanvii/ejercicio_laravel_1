@@ -4,7 +4,7 @@
     <br>
     <b>Teléfono:</b> {{$manager->phone}}
     <br>
-    <form action="/classifications/{{$manager->id}}" method="GET">
+    <form action="/classificationbymanager/{{$manager->id}}" method="GET">
         <button type="submit">Classification</button>
     </form>
     <br>

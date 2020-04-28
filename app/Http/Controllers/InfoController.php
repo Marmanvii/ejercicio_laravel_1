@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Info;
 use App\Classification;
+use App\Tag;
 
 class InfoController extends Controller
 {
@@ -118,5 +119,17 @@ class InfoController extends Controller
         $info -> delete();
 
         return redirect('/');
+    }
+
+    public function getInfosByClassification ($id)
+    {
+        $infos = Classification::find($id)->info;
+        return $infos;
+    }
+
+    public function getInfosByTag ($id) 
+    {
+        $infos = Tag::find($id)->infos;
+        return $infos;
     }
 }

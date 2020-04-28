@@ -27,8 +27,7 @@ class ManagerController extends Controller
 
     public function show($id)
     {
-        $manager = Classification::find($id)->manager;
-        return $manager;
+        //
     }
 
     public function edit($id)
@@ -45,4 +44,11 @@ class ManagerController extends Controller
     {
         //
     }
+
+    public function getManagerByClassification ($id) 
+    {
+        $manager = Classification::find($id)->manager;
+        return $manager;
+    }
+
 }

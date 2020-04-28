@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Tag;
+use App\Info;
 
 class TagController extends Controller
 {
@@ -43,5 +44,11 @@ class TagController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getTagsByInfo ($id) 
+    {
+        $tags = Info::find($id)->tags;
+        return $tags;
     }
 }
