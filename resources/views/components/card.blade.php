@@ -1,6 +1,4 @@
-
-
-<div class="card">
+<div class="card" style="margin: 10%;">
     <div class="card-header">
         <b>{{$title}}</b> <br>
     </div>
@@ -10,34 +8,30 @@
         {{$author}} <br>
         {{$body}} <br>
         @foreach ($classifications as $classification)
-            @if ($classification_id == $classification->id)
+            @if ($classificationid == $classification->id)
                 {{$classification->name}}
             @endif
         @endforeach
     </div>
+    <div class="btn-group" role="group" aria-label="Basic example">
 
-    <div class="column" >
-        <form action="/infos/{{$id}}/edit" method="GET">
-            <button type="submit">Editar</button>
-        </form>
+            <form action="/infos/{{$id}}/edit" method="GET" style="margin: 8px;">
+                <button type="submit" class="btn btn-secondary">Editar</button>
+            </form>
+            <form method="POST" action="/infos/{{$id}}" style="margin: 8px;">
+                {{ csrf_field() }}
+                {{ method_field('DELETE') }}
+                <button type="submit" class="btn btn-secondary">Eliminar</button>
+            </form>
+            <form action="/classificationbyinfo/{{$classificationid}}" method="GET" style="margin: 8px;">
+                <button type="submit" class="btn btn-secondary">Classification</button>
+            </form>
+            <form action="/tagsbyinfo/{{$id}}" method="GET" style="margin: 8px;">
+                <button type="submit" class="btn btn-secondary">Tags</button>
+            </form>
     </div>
-    <div class="column">
-        <form method="POST" action="/infos/{{$id}}">
-            {{ csrf_field() }}
-            {{ method_field('DELETE') }}
-            <button type="submit">Eliminar</button>
-        </form>
-    </div>
-    <div class="column">
-        <form action="/classificationbyinfo/{{$classification_id}}" method="GET">
-            <button type="submit">Classification</button>
-        </form>
-    </div>
-    <div class="column">
-        <form action="/tagsbyinfo/{{$id}}" method="GET">
-            <button type="submit">Tags</button>
-        </form>
-    </div>
+
+    
     <br>
     <br>
     <br>

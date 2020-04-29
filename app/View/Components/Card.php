@@ -11,17 +11,17 @@ class Card extends Component
     public $date;
     public $body;
     public $id;
-    public $classification_id;
+    public $classificationid;
     public $classifications;
 
-    public function __construct($title, $author,$date, $body, $id, $classification_id, $classifications)
+    public function __construct($title, $author,$date, $body, $id, $classificationid, $classifications)
     {
         $this->title = $title;
         $this->author = $author;
         $this->date = $date;
         $this->body = $body;
         $this->id = $id;
-        $this->classification_id = $classification_id;
+        $this->classificationid = $classificationid;
         $this->classifications = $classifications;
     }
 

@@ -11,7 +11,7 @@
             :date="$info->date"
             :body="$info->body"
             :id="$info->id"
-            :classification_id="$info->classification_id"
+            :classificationid="$info->classification_id"
             :classifications="$classifications"
         />
     @endforeach
