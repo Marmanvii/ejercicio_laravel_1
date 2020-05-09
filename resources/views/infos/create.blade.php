@@ -2,6 +2,9 @@
     $date = now();
 @endphp
 
+@extends('layout.master')
+
+@section('content')
 <form method="POST" action="/infos">
     {{ csrf_field() }}
     <label for="author">Nombre Autor:</label><br>
@@ -19,4 +22,6 @@
 
     <input id="date" name="date" type="hidden" value="{{$date}}">
     <input type="submit" value="Submit">
-</form>
+    </form>
+@endsection
+
